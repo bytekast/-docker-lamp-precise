@@ -47,6 +47,12 @@ RUN pear install -o Mail_mime
 RUN pear install -o Log
 RUN pear install -o Net_SMTP
 
+# Enable XDebug
+RUN mkdir -p /opt/lib/php/extensions
+RUN wget http://share.rowellbelen.com/1k0jP/14tMf9Bz+ -O /opt/lib/php/extensions/xdebug.so 
+RUN rm /etc/php5/apache2/php.ini 
+ADD php.ini /etc/php5/apache2/php.ini 
+
 #Enviornment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 10M
 ENV PHP_POST_MAX_SIZE 10M
