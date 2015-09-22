@@ -48,10 +48,11 @@ RUN pear install -o Log
 RUN pear install -o Net_SMTP
 
 # Enable XDebug
-RUN mkdir -p /opt/lib/php/extensions
-RUN wget http://share.rowellbelen.com/1k0jP/14tMf9Bz+ -O /opt/lib/php/extensions/xdebug.so 
+RUN apt-get install php5-xdebug 
 RUN rm /etc/php5/apache2/php.ini 
-ADD php.ini /etc/php5/apache2/php.ini 
+ADD php.ini /etc/php5/apache2/php.ini
+
+RUN apt-get install -y vim
 
 #Enviornment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 10M
@@ -63,5 +64,5 @@ VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
 ENV AUTHORIZED_KEYS **None**
 ENV MYSQL_PASS password
 
-EXPOSE 80 3306 22
+EXPOSE 80 3306 22 9000
 CMD ["/run.sh"]
