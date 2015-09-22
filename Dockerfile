@@ -3,7 +3,7 @@ FROM ubuntu:precise
 # Install packages
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-  apt-get -y install supervisor git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen php-apc php5-mcrypt && \
+  apt-get -y install supervisor git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen php-apc php5-mcrypt php5-curl && \
   echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Add image configuration and scripts
@@ -52,7 +52,7 @@ RUN apt-get install php5-xdebug
 RUN rm /etc/php5/apache2/php.ini 
 ADD php.ini /etc/php5/apache2/php.ini
 
-RUN apt-get install -y vim
+RUN apt-get install -y vim curl
 
 #Enviornment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 10M
