@@ -52,7 +52,7 @@ RUN apt-get install php5-xdebug
 RUN rm /etc/php5/apache2/php.ini 
 ADD php.ini /etc/php5/apache2/php.ini
 
-RUN apt-get install -y vim curl
+RUN apt-get install -y vim curl gawk python-setuptools python-setproctitle 
 
 #Enviornment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 10M
